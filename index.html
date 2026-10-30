@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>С днём рождения! 🌼</title>
+<!-- Картинка для превью ссылки в мессенджерах -->
+<meta property="og:title" content="С днём рождения! 🌼">
+<meta property="og:description" content="Для самой любимой тёти — с любовью">
+<meta property="og:image" content="daisies.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Marck+Script&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbfaf6;
+    --text:#4a4040;
+    --soft:#8a7d7d;
+    --violet:#9b5c9e;
+    --gold:#e9b824;
+    --card:#ffffffcc;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:20px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  /* ---------- Первый экран ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    align-items:center;
+    text-align:center;
+    padding:0 20px 12vh;
+    overflow:hidden;
+  }
+  .hero-img{
+    position:absolute;inset:0;
+    background:url('daisies.jpg') center top/cover no-repeat;
+    animation:breathe 14s ease-in-out infinite alternate;
+    transform-origin:center top;
+  }
+  /* плавный переход картинки в фон */
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to bottom,transparent 35%,var(--bg) 88%);
+  }
+  @keyframes breathe{from{transform:scale(1)}to{transform:scale(1.06)}}
+
+  .hero-content{position:relative;z-index:2}
+  .hero-content::before{content:"";position:absolute;inset:-30px -60px;z-index:-1;
+    background:radial-gradient(ellipse at center,rgba(251,250,246,.85) 0%,rgba(251,250,246,.5) 45%,transparent 72%);}
+  h1{
+    font-family:'Marck Script',cursive;
+    font-weight:400;
+    font-size:clamp(3rem,11vw,6.5rem);
+    line-height:1.1;
+    background:linear-gradient(180deg,var(--violet) 15%,var(--gold) 95%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    opacity:0;animation:rise 1.6s .4s ease-out forwards;
+  }
+  .subtitle{
+    margin-top:14px;
+    font-size:clamp(1.15rem,3.6vw,1.6rem);
+    font-style:italic;color:var(--soft);
+    opacity:0;animation:rise 1.6s 1.2s ease-out forwards;
+  }
+  .scroll-hint{
+    margin-top:36px;font-size:1.6rem;color:var(--gold);
+    opacity:0;animation:rise 1s 2.2s forwards, bob 2.2s 3.2s ease-in-out infinite;
+    text-decoration:none;display:inline-block;
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+  /* ---------- Секции ---------- */
+  section{max-width:760px;margin:0 auto;padding:70px 22px;text-align:center}
+  h2{
+    font-family:'Marck Script',cursive;font-weight:400;
+    font-size:clamp(2.2rem,7vw,3.2rem);color:var(--violet);
+    margin-bottom:24px;
+  }
+  .letter p{margin-bottom:18px;font-size:clamp(1.15rem,3.4vw,1.35rem)}
+  .divider{font-size:1.6rem;letter-spacing:14px;color:var(--gold);margin:10px 0 0}
+
+  .wishes{
+    display:grid;gap:20px;
+    grid-template-columns:repeat(2,1fr);
+    margin-top:10px;
+  }
+  @media (max-width:560px){.wishes{grid-template-columns:1fr}}
+  .wish{
+    background:var(--card);
+    border-radius:22px;
+    padding:28px 22px;
+    box-shadow:0 8px 30px rgba(155,92,158,.08);
+    border:1px solid #f1ece0;
+    transition:transform .4s ease, box-shadow .4s ease;
+  }
+  .wish:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(233,184,36,.18)}
+  .wish .icon{font-size:2.2rem;display:block;margin-bottom:8px}
+  .wish h3{font-weight:600;font-size:1.3rem;margin-bottom:6px;color:var(--violet)}
+  .wish p{font-size:1.08rem;color:var(--soft)}
+
+  .love{
+    font-family:'Marck Script',cursive;
+    font-size:clamp(1.7rem,5.5vw,2.4rem);
+    line-height:1.4;color:var(--text);
+  }
+  .heart{display:inline-block;color:#e46a8c;animation:beat 1.4s ease-in-out infinite}
+  @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.15)}}
+  .signature{margin-top:22px;font-style:italic;color:var(--soft);font-size:1.25rem}
+
+  .btn{
+    margin-top:34px;
+    font-family:inherit;font-size:1.2rem;
+    padding:14px 34px;border:none;border-radius:40px;cursor:pointer;
+    color:#fff;
+    background:linear-gradient(135deg,var(--violet),#c98bb9 55%,var(--gold));
+    box-shadow:0 8px 24px rgba(155,92,158,.25);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn:hover{transform:scale(1.05);box-shadow:0 12px 30px rgba(155,92,158,.35)}
+
+  footer{text-align:center;padding:30px 20px 60px;color:#b5aaaa;font-size:1rem}
+
+  /* появление при прокрутке */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity 1.2s ease, transform 1.2s ease}
+  .reveal.visible{opacity:1;transform:none}
+  .wishes .wish.reveal:nth-child(2){transition-delay:.15s}
+  .wishes .wish.reveal:nth-child(3){transition-delay:.3s}
+  .wishes .wish.reveal:nth-child(4){transition-delay:.45s}
+
+  /* ---------- Падающие лепестки ---------- */
+  #petals{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
+  .petal{
+    position:absolute;top:-40px;
+    width:12px;height:22px;
+    background:radial-gradient(ellipse at 50% 30%,#fff 55%,#f3efe4 100%);
+    border-radius:50% 50% 50% 50% / 65% 65% 35% 35%;
+    box-shadow:0 1px 3px rgba(0,0,0,.08);
+    opacity:.9;
+    animation:fall linear forwards;
+  }
+  @keyframes fall{
+    0%{transform:translate(0,0) rotate(0deg)}
+    25%{transform:translate(30px,25vh) rotate(90deg)}
+    50%{transform:translate(-20px,50vh) rotate(200deg)}
+    75%{transform:translate(25px,75vh) rotate(290deg)}
+    100%{transform:translate(-10px,110vh) rotate(380deg)}
+  }
+
+  /* конфетти */
+  #confetti{position:fixed;inset:0;pointer-events:none;z-index:20}
+
+  /* ---------- Кнопка музыки ---------- */
+  .music-btn{
+    position:fixed;right:18px;bottom:18px;z-index:30;
+    width:58px;height:58px;border-radius:50%;border:none;cursor:pointer;
+    background:#fff;font-size:1.6rem;
+    box-shadow:0 6px 20px rgba(155,92,158,.25);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .3s;
+  }
+  .music-btn:hover{transform:scale(1.08)}
+  .music-btn.playing{animation:spin 6s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .music-tip{
+    position:fixed;right:86px;bottom:30px;z-index:30;
+    background:#fff;padding:6px 14px;border-radius:20px;font-size:1rem;
+    color:var(--violet);box-shadow:0 4px 14px rgba(0,0,0,.08);
+    opacity:0;animation:rise 1s 3s forwards;
+    transition:opacity .5s;
+  }
+  .music-tip.hide{opacity:0 !important;animation:none}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important}
+    h1,.subtitle,.scroll-hint,.reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div id="petals"></div>
+<canvas id="confetti"></canvas>
+
+<!-- ====== ПЕРВЫЙ ЭКРАН ====== -->
+<header class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <h1>С днём рождения!</h1>
+    <!-- ✏️ Замените на имя / обращение -->
+    <p class="subtitle">Нашей дорогой, любимой тёте</p>
+    <a href="#letter" class="scroll-hint" aria-label="Листать дальше">🌼<br>↓</a>
+  </div>
+</header>
+
+<!-- ====== ПОЗДРАВЛЕНИЕ ====== -->
+<section id="letter" class="letter">
+  <h2 class="reveal">Родная наша!</h2>
+  <p class="reveal">Сегодня твой день — день, когда хочется сказать самые тёплые слова, которые мы так часто носим в сердце, но так редко произносим вслух.</p>
+  <p class="reveal">Спасибо тебе за твою доброту, за мудрость и заботу, за то, что рядом с тобой всегда светло и уютно — как в солнечный день на ромашковом поле.</p>
+  <p class="reveal">Пусть этот день будет наполнен улыбками, цветами и любимыми голосами, а каждый следующий — приносит повод для радости.</p>
+  <div class="divider reveal">✿ ✿ ✿</div>
+</section>
+
+<!-- ====== ПОЖЕЛАНИЯ ====== -->
+<section>
+  <h2 class="reveal">Мы желаем тебе</h2>
+  <div class="wishes">
+    <div class="wish reveal">
+      <span class="icon">🌿</span>
+      <h3>Крепкого здоровья</h3>
+      <p>Бодрости, лёгкости и сил на всё, что задумано и о чём мечтается.</p>
+    </div>
+    <div class="wish reveal">
+      <span class="icon">☀️</span>
+      <h3>Много радости</h3>
+      <p>Тёплых солнечных дней, приятных сюрпризов и счастливых мгновений.</p>
+    </div>
+    <div class="wish reveal">
+      <span class="icon">🌸</span>
+      <h3>Душевного покоя</h3>
+      <p>Гармонии, уюта в доме и тишины, в которой хорошо и спокойно.</p>
+    </div>
+    <div class="wish reveal">
+      <span class="icon">🤍</span>
+      <h3>Любви и тепла</h3>
+      <p>Чтобы родные были рядом, а сердце всегда чувствовало заботу.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ЛЮБОВЬ ====== -->
+<section>
+  <p class="love reveal">Знай: мы тебя очень любим, ценим и гордимся тобой. Ты — наше сокровище <span class="heart">♥</span></p>
+  <!-- ✏️ Замените подпись -->
+  <p class="signature reveal">С любовью, твои родные</p>
+  <button class="btn reveal" id="celebrate">Устроить праздник 🎉</button>
+</section>
+
+<footer>🌼 &nbsp;с любовью&nbsp; 🌼</footer>
+
+<!-- ====== МУЗЫКА ====== -->
+<!-- ✏️ Положите файл music.mp3 рядом с index.html (или поменяйте имя здесь) -->
+<audio id="music" src="music.mp3" loop preload="auto"></audio>
+<button class="music-btn" id="musicBtn" aria-label="Включить музыку">🎵</button>
+<div class="music-tip" id="musicTip">Включите музыку ♪</div>
+
+<script>
+/* ---------- Падающие лепестки ---------- */
+const petals = document.getElementById('petals');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function addPetal(){
+  const p = document.createElement('div');
+  p.className = 'petal';
+  const size = 0.6 + Math.random()*0.8;
+  p.style.left = Math.random()*100 + 'vw';
+  p.style.transform = `scale(${size})`;
+  p.style.width = 12*size + 'px';
+  p.style.height = 22*size + 'px';
+  p.style.animationDuration = (9 + Math.random()*8) + 's';
+  p.style.opacity = 0.55 + Math.random()*0.4;
+  petals.appendChild(p);
+  p.addEventListener('animationend', () => p.remove());
+}
+if(!reduce){ setInterval(addPetal, 900); for(let i=0;i<4;i++) setTimeout(addPetal, i*400); }
+
+/* ---------- Появление при прокрутке ---------- */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
+},{threshold:.2});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- Конфетти ---------- */
+const cv = document.getElementById('confetti'), ctx = cv.getContext('2d');
+let parts = [], running = false;
+const colors = ['#9b5c9e','#e9b824','#f6d365','#e46a8c','#c98bb9','#ffffff','#a8d5a2'];
+function resize(){ cv.width = innerWidth; cv.height = innerHeight; }
+addEventListener('resize', resize); resize();
+
+function burst(count=160){
+  for(let i=0;i<count;i++){
+    parts.push({
+      x: innerWidth/2 + (Math.random()-.5)*innerWidth*0.3,
+      y: innerHeight*0.6,
+      vx:(Math.random()-.5)*14,
+      vy:-(Math.random()*15+8),
+      w:6+Math.random()*6, h:8+Math.random()*8,
+      r:Math.random()*Math.PI, vr:(Math.random()-.5)*0.3,
+      c:colors[Math.floor(Math.random()*colors.length)],
+      circle:Math.random()<.3, life:0
+    });
+  }
+  if(!running){ running = true; requestAnimationFrame(tick); }
+}
+function tick(){
+  ctx.clearRect(0,0,cv.width,cv.height);
+  parts.forEach(p=>{
+    p.vy += 0.32; p.vx *= 0.985; p.vy *= 0.985;
+    p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life++;
+    ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r);
+    ctx.fillStyle = p.c;
+    ctx.globalAlpha = Math.max(0, 1 - p.life/260);
+    if(p.circle){ ctx.beginPath(); ctx.arc(0,0,p.w/2,0,7); ctx.fill(); }
+    else ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h*Math.abs(Math.cos(p.r*2)));
+    ctx.restore();
+  });
+  parts = parts.filter(p=>p.y < cv.height+40 && p.life < 260);
+  if(parts.length) requestAnimationFrame(tick);
+  else { running = false; ctx.clearRect(0,0,cv.width,cv.height); }
+}
+/* мягкий залп при открытии */
+if(!reduce) setTimeout(()=>burst(110), 1300);
+document.getElementById('celebrate').addEventListener('click', ()=>{
+  burst(200); setTimeout(()=>burst(120), 450);
+  playMusic();
+});
+
+/* ---------- Музыка ---------- */
+const audio = document.getElementById('music');
+const mBtn = document.getElementById('musicBtn');
+const tip = document.getElementById('musicTip');
+audio.volume = 0.6;
+function playMusic(){
+  audio.play().then(()=>{
+    mBtn.classList.add('playing'); mBtn.textContent='🌼';
+    mBtn.setAttribute('aria-label','Выключить музыку');
+    tip.classList.add('hide');
+  }).catch(()=>{});
+}
+function pauseMusic(){
+  audio.pause(); mBtn.classList.remove('playing'); mBtn.textContent='🎵';
+  mBtn.setAttribute('aria-label','Включить музыку');
+}
+mBtn.addEventListener('click', ()=> audio.paused ? playMusic() : pauseMusic());
+/* если файла нет — прячем кнопку */
+audio.addEventListener('error', ()=>{ mBtn.style.display='none'; tip.style.display='none'; });
+</script>
+</body>
+</html>
